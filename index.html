@@ -3,137 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversario Mi Amor</title>
+    <title>Caminos del Corazón</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Sacramento&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="hearts-bg"></div>
-        
         <header>
-            <h1 class="title">Feliz Aniversario</h1>
-            <h2 class="subtitle">1 Año y 3 Meses Juntos</h2>
+            <h1>Caminos del Corazón</h1>
         </header>
         
-        <section class="timeline">
-            <div class="timeline-header">
-                <h3>Nuestro Viaje Juntos</h3>
+        <div class="game-container">
+            <div class="level-info">
+                <h2 id="level-title">Nivel 1: Corazón</h2>
+                <p id="level-description">Une los puntos en el orden correcto para revelar una figura especial.</p>
             </div>
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>16 de noviembre de 2022</h4>
-                        <p>Donde todo comenzo</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>1 de enero de 2024</h4>
-                        <p>El mejor inicio de año que pudiese haber deseado.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>6 de marzo de 2024</h4>
-                        <p>Nuestro primer beso, abrazo, entre otras cosas🫣.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>1 de enero de 2025</h4>
-                        <p>El dia que demostramos que esto si va a durar y no es algo simplemente pasajero.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Hoy: 1 año y 3 meses</h4>
-                        <p>Y sigo enamorándome de ti cada día más.</p>
-                    </div>
+            
+            <div class="canvas-container">
+                <canvas id="game-canvas"></canvas>
+            </div>
+            
+            <div class="controls">
+                <button id="reset-btn">Reiniciar Nivel</button>
+                <button id="hint-btn">Pista</button>
+                <div class="sound-controls">
+                    <label>
+                        <input type="checkbox" id="sound-toggle" checked>
+                        Sonidos
+                    </label>
+                    <label>
+                        <input type="checkbox" id="music-toggle">
+                        Música
+                    </label>
                 </div>
             </div>
-        </section>
+        </div>
         
-        <section class="love-letter">
-            <div class="letter-paper">
-                <h3>Mi Amor,</h3>
-                <p>
-                    Hoy celebramos 1 año y 3 meses juntos, y quiero que sepas que cada momento a tu lado ha sido un regalo. 
-                    Tu sonrisa ilumina mis días, tu voz calma mis tormentas, y tu amor me hace mejor persona.
-                </p>
-                <p>
-                    Gracias por compartir tu vida conmigo, por los momentos de alegría, por tu apoyo en los momentos difíciles, 
-                    y por construir juntos este hermoso camino.
-                </p>
-                <p>
-                    Te amo más de lo que las palabras pueden expresar, y estoy emocionado por todos los capítulos 
-                    que aún nos quedan por escribir.
-                </p>
-                <p class="signature">Con todo mi amor,</p>
-                <p class="signature">Bri</p>
+        <div id="celebration" class="hidden">
+            <div class="message-container">
+                <h2 id="celebration-message">¡Tú completas mi mundo!</h2>
+                <button id="next-level-btn">Siguiente Nivel</button>
             </div>
-        </section>
-        
-        <section class="photo-gallery">
-            <h3>Fotitos</h3>
-            <div class="gallery-container">
-                <div class="photo-frame">
-                    <img src="images/770D094C-0376-4E96-96A9-30D0D0ECF71B_1_105_c.jpeg" class="gallery-image">
-                </div>
-                <div class="photo-frame">
-                    <img src="images/F17FD316-AC60-47FD-8F44-A68050334C81_1_105_c.jpeg" class="gallery-image">
-                </div>
-                <div class="photo-frame">
-                    <img src="images/IMG-20240915-WA0092.jpg" class="gallery-image">
-                </div>
-            </div>
-        </section>
-        
-        <section class="reasons">
-            <h3>Razones Por Las Que Te Amo</h3>
-            <div class="reasons-container">
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Tu sonrisa ilumina mi mundo</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Tu forma de ver la vida me inspira</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Me haces sentir amado cada día</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Contigo, hasta los momentos simples son especiales</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Eres mi mejor amiga y mi compañera de vida</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-heart"></i>
-                    <p>Tu corazón es el hogar más hermoso</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="message">
-            <h3>Un Mensaje Para Ti</h3>
-            <button id="message-btn">Haz clic aquí</button>
-            <div id="special-message" class="hidden">
-                <p>Cada día a tu lado es un regalo. Te amo infinitamente y estoy emocionado por nuestro futuro juntos. ¡Feliz aniversario, mi amor!</p>
-            </div>
-        </section>
-        
-        <footer>
-            <p>Con amor, para el amor de mi vida ❤️</p>
-            <p class="date">Hoy y siempre</p>
-        </footer>
+        </div>
     </div>
     
-    <script src="script.js"></script>
+    <audio id="connect-sound" src="sounds/connect.mp3" preload="auto"></audio>
+    <audio id="complete-sound" src="sounds/complete.mp3" preload="auto"></audio>
+    <audio id="background-music" src="sounds/background.mp3" loop preload="auto"></audio>
+    
+    <script src="js/particles.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
