@@ -257,14 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkLevelCompletion() {
         const level = LEVELS[currentLevel];
         
-        // Verificar si todos los puntos están conectados en el orden correcto
+        // Verificar si todos los puntos están conectados
         if (connections.length === level.points.length) {
             // Verificar si el orden es correcto
             let isCorrect = true;
+            
+            // Comparar cada conexión con el índice esperado
             for (let i = 0; i < connections.length; i++) {
-                // Comparar el índice relativo (0-1) con el índice absoluto
-                const expectedIndex = i % level.points.length;
-                if (connections[i] !== expectedIndex) {
+                if (connections[i] !== i) {
                     isCorrect = false;
                     break;
                 }
