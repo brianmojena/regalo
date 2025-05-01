@@ -257,25 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkLevelCompletion() {
         const level = LEVELS[currentLevel];
         
-        // Verificar si todos los puntos están conectados
+        // Verificar si se han conectado todos los puntos necesarios
         if (connections.length === level.points.length) {
-            // Verificar si el orden es correcto
-            let isCorrect = true;
+            console.log("Conexiones completadas:", connections);
             
-            // Comparar cada conexión con el índice esperado
-            for (let i = 0; i < connections.length; i++) {
-                if (connections[i] !== i) {
-                    isCorrect = false;
-                    break;
-                }
-            }
-            
-            if (isCorrect) {
-                // Nivel completado
-                setTimeout(() => {
-                    celebrateLevelCompletion();
-                }, 500);
-            }
+            // Mostrar celebración (temporalmente para depuración)
+            setTimeout(() => {
+                celebrateLevelCompletion();
+            }, 500);
         }
     }
     
