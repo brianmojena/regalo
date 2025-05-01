@@ -228,21 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (distance <= point.radius) {
                 // Si es el primer punto o es adyacente al último punto seleccionado
-                if (connections.length === 0 || i === connections[0] || i !== connections[connections.length - 1]) {
-                    if (connections.length === 0 || i !== connections[connections.length - 1]) {
-                        // Añadir conexión
-                        connections.push(i);
-                        selectedPointIndex = i;
-                        
-                        // Reproducir sonido de conexión
-                        if (soundEnabled) {
-                            connectSound.currentTime = 0;
-                            connectSound.play().catch(e => console.log('Error al reproducir sonido:', e));
-                        }
-                        
-                        // Verificar si el nivel está completo
-                        checkLevelCompletion();
+                // Modificación: permitir conectar el último punto con el primero para cerrar la figura
+                if (connections.length === 0 || 
+                    (connections.length === points.length - 1 && i === connections[0]) || 
+                    (i !== connections[connections.length - 1])) {
+                    
+                    // Añadir conexión
+                    connections.push(i);
+                    selectedPointIndex = i;
+                    
+                    // Reproducir sonido de conexión
+                    if (soundEnabled) {
+                        connectSound.currentTime = 0;
+                        connectSound.play().catch(e => console.log('Error al reproducir sonido:', e));
                     }
+                    
+                    // Verificar si el nivel está completo
+                    checkLevelCompletion();
                 }
                 break;
             }
