@@ -9,13 +9,15 @@ const LEVELS = [
         title: "Nivel 1: Corazón",
         description: "Une los puntos en el orden correcto para revelar un corazón.",
         points: [
-            { x: 0.5, y: 0.2 },  // Punto superior del corazón
-            { x: 0.7, y: 0.3 },  // Curva superior derecha
-            { x: 0.8, y: 0.5 },  // Lado derecho
+            { x: 0.5, y: 0.3 },  // Punto superior del corazón
+            { x: 0.65, y: 0.2 },  // Curva superior derecha
+            { x: 0.8, y: 0.35 },  // Lado derecho superior
+            { x: 0.7, y: 0.55 },  // Lado derecho medio
             { x: 0.5, y: 0.8 },  // Punta inferior
-            { x: 0.2, y: 0.5 },  // Lado izquierdo
-            { x: 0.3, y: 0.3 },  // Curva superior izquierda
-            { x: 0.5, y: 0.2 }   // Volver al inicio para cerrar
+            { x: 0.3, y: 0.55 },  // Lado izquierdo medio
+            { x: 0.2, y: 0.35 },  // Lado izquierdo superior
+            { x: 0.35, y: 0.2 },  // Curva superior izquierda
+            { x: 0.5, y: 0.3 }   // Volver al inicio para cerrar
         ],
         celebrationMessage: "Tú completas mi mundo",
         revealImage: null  // Se puede agregar una imagen para revelar
