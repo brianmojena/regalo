@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caminos del Corazón</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Sacramento&family=Great+Vibes&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Amor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Caminos del Corazón</h1>
-        </header>
-        
-        <div class="game-container">
-            <div class="level-info">
-                <h2 id="level-title">Nivel 1: Corazón</h2>
-                <p id="level-description">Une los puntos en el orden correcto para revelar una figura especial.</p>
-            </div>
-            
-            <div class="canvas-container">
-                <canvas id="game-canvas"></canvas>
-            </div>
-            
-            <div class="controls">
-                <button id="reset-btn">Reiniciar Nivel</button>
-                <button id="hint-btn">Pista</button>
-                <div class="sound-controls">
-                    <label>
-                        <input type="checkbox" id="sound-toggle" checked>
-                        Sonidos
-                    </label>
-                    <label>
-                        <input type="checkbox" id="music-toggle">
-                        Música
-                    </label>
-                </div>
-            </div>
-        </div>
-        
-        <div id="celebration" class="hidden">
-            <div class="message-container">
-                <h2 id="celebration-message">¡Tú completas mi mundo!</h2>
-                <button id="next-level-btn">Siguiente Nivel</button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="surprise-control">
+      <button id="surpriseButton" aria-label="¡Sorpresa!">
+        <i class="surprise-icon">?</i>
+      </button>
     </div>
-    
-    <audio id="connect-sound" src="sounds/connect.mp3" preload="auto"></audio>
-    <audio id="complete-sound" src="sounds/complete.mp3" preload="auto"></audio>
-    <audio id="background-music" src="sounds/background.mp3" loop preload="auto"></audio>
-    
-    <script src="js/particles.js"></script>
-    <script src="js/levels.js"></script>
-    <script src="js/game.js"></script>
+
+    <div class="envelope-container">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-content"></div>
+      </div>
+      <div class="tulip-container">
+        <div class="tulip">
+          <div class="stem"></div>
+          <div class="flower">
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+          </div>
+          <div class="leaf"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter" id="letter">
+      <div class="letter-content">
+        <p>Mi amor, mi universo, mi todo:</p>
+        
+        <p>Hoy no es un día más. Hoy el mundo celebra los 15 años de la persona más hermosa que he conocido: tú. Quisiera que pudieras ver, aunque fuera por un segundo, cómo te veo yo… porque en mis ojos no eres solo una chica hermosa: eres luz, eres paz, eres esperanza, eres todo lo que hace que mi mundo tenga sentido.</p>
+        
+        <p>Sé que este día significa mucho para ti, pero déjame confesarte algo: también es uno de los días más importantes de mi vida, porque marca el nacimiento de la persona que llegó a cambiarlo todo. Desde que llegaste, llenaste mi vida de colores que ni siquiera sabía que existían. Me enseñaste a sonreír en los días grises y a encontrar refugio en tu abrazo cuando la vida se ponía difícil.</p>
+        
+        <p>Tú, con tu ternura infinita, has sido mi calmante en el dolor, mi fuerza en la debilidad, y mi calma en medio del caos. Incluso cuando mis manos no me responden como quisiera, cuando mi cuerpo me limita, tú estás ahí. Cuidándome. Apoyándome. Amándome sin condiciones.</p>
+        
+        <p>Quisiera poder escribirte una carta con mi puño y letra, pero hoy mis manos no me lo permiten. Aun así, no podía dejar pasar este día sin decirte todo lo que mi corazón grita: que te amo con una intensidad que no cabe en palabras, que agradezco cada día por tenerte, y que me siento el ser más afortunado del mundo por caminar la vida a tu lado.</p>
+        
+        <p>Tú no solo eres mi novia. Eres mi compañera, mi mejor amiga, mi razón para seguir, mi cielo y mi hogar. En ti encontré la calma que siempre soñé y el amor que pensé que no merecía. Tú me hiciste creer que, a pesar de todo, soy digno de amor. Y eso… eso vale más que mil vidas.</p>
+        
+        <p>Feliz cumpleaños, mi amor. Que cada deseo que pidas se haga realidad. Yo ya pedí el mío… y se cumplió el día que te conocí.</p>
+        
+        <p class="signature">Con todo mi corazón,<br>Tu eterno enamorado.</p>
+      </div>
+      <button id="closeButton">Cerrar carta</button>
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
 </body>
 </html>

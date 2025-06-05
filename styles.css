@@ -1,213 +1,626 @@
-/* Estilos generales */
+:root {
+  --pink: #ffd1dc;
+  --beige: #f5e6ca;
+  --gold: #d4af37;
+  --lavender: #e6e6fa;
+  --white: #ffffff;
+  --tulip-pink: #ff69b4;
+  --tulip-red: #dc143c;
+  --green: #228b22;
+  --dark-green: #006400;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Sacramento', cursive;
-    background: linear-gradient(135deg, #f5e6ea 0%, #e2d1f9 100%);
-    color: #5a5a8f;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--lavender) 0%, var(--pink) 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 10px;
 }
 
 .container {
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
-    text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-header h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
-    margin-bottom: 30px;
-    color: #d16ba5;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+/* Sorpresa Control */
+.surprise-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
 }
 
-/* Estilos del juego */
-.game-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+#surpriseButton {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--tulip-pink);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--tulip-pink);
 }
 
-.level-info {
-    margin-bottom: 20px;
+#surpriseButton:hover {
+  transform: scale(1.1) rotate(15deg);
+  background: var(--tulip-pink);
+  color: white;
 }
 
-.level-info h2 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: #9370db;
-    margin-bottom: 10px;
+.surprise-icon {
+  transition: transform 0.3s ease;
 }
 
-.level-info p {
-    font-family: 'Sacramento', cursive;
-    font-size: 1.2rem;
+#surpriseButton:hover .surprise-icon {
+  transform: scale(1.2);
 }
 
-.canvas-container {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    margin: 0 auto;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+/* Animaciones de globos y confeti */
+.balloon {
+  position: fixed;
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 1000;
+  pointer-events: none;
+  animation: float-up 6s ease-in-out forwards;
 }
 
-#game-canvas {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.balloon:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 20px;
+  background-color: #666;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Controles */
-.controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: var(--tulip-pink);
+  opacity: 0.8;
+  z-index: 1000;
+  pointer-events: none;
+  animation: confetti-fall 4s linear forwards;
 }
 
-button {
-    background: linear-gradient(to right, #e2a9e5, #9370db);
-    border: none;
-    border-radius: 25px;
-    color: white;
-    padding: 10px 20px;
-    font-family: 'Sacramento', cursive;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
 }
 
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-button:active {
-    transform: translateY(1px);
+/* Envelope and Tulip Container */
+.envelope-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  gap: 30px;
 }
 
-.sound-controls {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+/* Envelope Styles */
+.envelope {
+  width: 280px;
+  height: 180px;
+  background-color: var(--beige);
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+  border: 2px solid var(--gold);
 }
 
-.sound-controls label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+.envelope:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
 }
 
-/* Celebración */
-#celebration {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--tulip-pink) 100%);
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 2;
+  border-radius: 8px 8px 0 0;
 }
 
-.message-container {
-    background: linear-gradient(135deg, #f5e6ea 0%, #e2d1f9 100%);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 80%;
-    animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.envelope-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--beige);
+  border-radius: 8px;
+  z-index: 1;
 }
 
-#celebration-message {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #d16ba5;
-    margin-bottom: 20px;
+/* Tulip Styles - Improved colors and contrast */
+.tulip-container {
+  position: relative;
+  z-index: 5;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-#next-level-btn {
-    font-size: 1.2rem;
-    padding: 12px 25px;
+.tulip {
+  position: relative;
+  height: 200px;
+  width: 80px;
+  margin-top: -20px;
+  animation: sway 6s ease-in-out infinite;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-.hidden {
-    display: none !important;
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 150px;
+  background: linear-gradient(
+    to bottom, 
+    #2e8b57 0%, 
+    #228b22 30%, 
+    #006400 100%
+  );
+  border-radius: 6px;
+  box-shadow: 
+    inset 1px 0 2px rgba(255, 255, 255, 0.5),
+    inset -1px 0 2px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-/* Animaciones */
-@keyframes pop-in {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+.flower {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  width: 70px;
+  height: 90px;
+  z-index: 2;
 }
 
-/* Responsive */
+.petal {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.15),
+    inset 0 -10px 15px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.petal-1 {
+  left: 5px;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  transform: rotate(-20deg) scale(0.95);
+  z-index: 3;
+}
+
+.petal-2 {
+  left: 20px;
+  background: linear-gradient(135deg, #ff69b4 0%, #db7093 100%);
+  transform: rotate(0deg) scale(1);
+  z-index: 4;
+  width: 45px;
+  height: 90px;
+}
+
+.petal-3 {
+  left: 35px;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  transform: rotate(20deg) scale(0.95);
+  z-index: 3;
+}
+
+.leaf {
+  position: absolute;
+  bottom: 70px;
+  left: -15px;
+  width: 50px;
+  height: 25px;
+  background: linear-gradient(
+    135deg, 
+    #2e8b57 0%, 
+    #228b22 50%, 
+    #006400 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-20deg);
+  box-shadow: 
+    1px 1px 3px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.leaf:after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  width: 60%;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+/* Letter Styles - Improved responsive design */
+.letter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100vh);
+  width: 95%;
+  max-width: 700px;
+  max-height: 90vh;
+  background-color: var(--white);
+  padding: 30px 25px 70px; /* Ajuste del padding inferior para el botón */
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+  z-index: 50;
+  overflow-y: auto;
+  border: 3px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-content {
+  font-family: "Dancing Script", cursive;
+  color: #333;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  text-align: justify;
+  flex-grow: 1;
+  padding-bottom: 20px;
+}
+
+.letter-content p {
+  margin-bottom: 20px;
+  text-indent: 20px;
+}
+
+.letter-content p:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--tulip-red);
+  text-indent: 0;
+  margin-bottom: 30px;
+}
+
+.signature {
+  text-align: right;
+  font-weight: 700;
+  margin-top: 40px;
+  font-size: 1.4rem;
+  color: var(--tulip-red);
+  text-indent: 0;
+}
+
+#closeButton {
+  position: sticky;
+  display: block;
+  margin: 20px auto 0;
+  width: 120px;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--tulip-pink) 100%);
+  color: #333;
+  border: 2px solid var(--gold);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 60;
+  text-align: center;
+}
+
+#closeButton:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
-    }
-    
-    .canvas-container {
-        height: 350px;
-    }
-    
-    .controls {
-        flex-direction: column;
-    }
-    
-    #celebration-message {
-        font-size: 2rem;
-    }
+  .container {
+    padding: 10px;
+    min-height: 90vh;
+  }
+
+  .envelope-container {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 0;
+  }
+
+  .envelope {
+    width: 240px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .tulip {
+    height: 150px;
+    width: 80px;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .stem {
+    height: 100px;
+    width: 6px;
+  }
+
+  .flower {
+    width: 70px;
+    height: 90px;
+  }
+
+  .petal {
+    width: 35px;
+    height: 70px;
+  }
+  
+  .petal-1 {
+    left: 5px;
+    transform: rotate(-15deg) scale(0.95);
+  }
+  
+  .petal-2 {
+    left: 20px;
+    width: 45px;
+    height: 85px;
+  }
+  
+  .petal-3 {
+    left: 35px;
+    transform: rotate(15deg) scale(0.95);
+  }
+  
+  .leaf {
+    bottom: 65px;
+    left: -10px;
+    width: 45px;
+    height: 22px;
+  }
+
+  .letter {
+    width: 95%;
+    max-height: 80vh;
+    padding: 15px;
+  }
+
+  .letter-content {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .letter-content p:first-child {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .signature {
+    font-size: 1.1rem;
+    margin-top: 25px;
+  }
+
+  #closeButton {
+    position: fixed;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 10px 24px;
+    font-size: 1rem;
+    width: auto;
+    margin: 0;
+    z-index: 1000;
+  }
+  
+  #surpriseButton {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    top: 12px;
+    right: 12px;
+  }
 }
 
 @media (max-width: 480px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    .level-info h2 {
-        font-size: 1.5rem;
-    }
-    
-    .canvas-container {
-        height: 300px;
-    }
-    
-    button {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-    
-    #celebration-message {
-        font-size: 1.5rem;
-    }
+  .envelope {
+    width: 200px;
+    height: 140px;
+  }
+
+  .tulip {
+    height: 120px;
+    width: 50px;
+  }
+
+  .stem {
+    height: 70px;
+    width: 5px;
+  }
+
+  .flower {
+    width: 40px;
+    height: 50px;
+  }
+
+  .petal {
+    width: 25px;
+    height: 50px;
+  }
+
+  .letter {
+    width: 100%;
+    max-height: 80vh;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .letter-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-bottom: 50px;
+  }
+
+  .letter-content p:first-child {
+    font-size: 1.2rem;
+  }
+
+  .signature {
+    font-size: 1.1rem;
+  }
+
+  #closeButton {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  #musicToggle {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .music-icon {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 600px) {
+  .letter {
+    max-height: 95vh;
+    padding: 15px;
+  }
+
+  .letter-content {
+    font-size: 0.95rem;
+    padding-bottom: 40px;
+  }
+}
+
+/* Classes for JavaScript animations */
+.envelope-open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.letter-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.envelope-hidden {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+/* Scrollbar styling for the letter */
+.letter::-webkit-scrollbar {
+  width: 8px;
+}
+
+.letter::-webkit-scrollbar-track {
+  background: var(--beige);
+  border-radius: 4px;
+}
+
+.letter::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+.letter::-webkit-scrollbar-thumb:hover {
+  background: var(--tulip-pink);
 }
