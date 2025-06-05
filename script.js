@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const envelope = document.getElementById("envelope")
   const letter = document.getElementById("letter")
-  const closeButton = document.getElementById("closeButton")
   const surpriseButton = document.getElementById("surpriseButton")
 
   // Function to open the envelope and show the letter
@@ -94,8 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event listeners
   envelope.addEventListener("click", openEnvelope)
-  closeButton.addEventListener("click", closeLetter)
   surpriseButton.addEventListener("click", launchSurprise)
+  
+  // Cerrar la carta al hacer clic fuera de ella
+  document.addEventListener("click", (event) => {
+    // Verificar si el clic fue fuera de la carta y no en el sobre ni en el botón de sorpresa
+    if (!letter.contains(event.target) && 
+        !envelope.contains(event.target) && 
+        event.target !== surpriseButton && 
+        !surpriseButton.contains(event.target) &&
+        letter.classList.contains("letter-visible")) {
+      closeLetter()
+    }
+  })
   
   // Agregar animación sutil al tulipán
   const tulip = document.querySelector(".tulip")
